@@ -19,6 +19,7 @@ namespace MovieRecommender
             CreateHostBuilder(args).Build().Run(); // here by default
             MLContext mlcontext = new MLContext(); // initializing creates new ML.NET enviornment
             (IDataView trainingDataView, IDataView testDataView) = LoadData(mlcontext); // calls LoadData
+            ITransformer model = BuildAndTrainModel(mlcontext, trainingDataView); // calls BuildAndTrainModel
         }
 
         public static (IDataView training, IDataView test) LoadData(MLContext mlContext)
@@ -40,5 +41,34 @@ namespace MovieRecommender
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+    }
+
+    public static ITransformer BuildAndTrainModel(MLContext mlContext, IDataView trainingDataView)
+    {
+        // define the data transformations
+        // MapValueToKey() transformers userId and movieId to numeric key type Feature column
+        IEstimator<ITransformer> estimator = mlContext.Transforms.Conversion.MapValueToKey(outputColumnName: "userIdEncoded", inputColumnName: "userId")
+    .Append(mlContext.Transforms.Conversion.MapValueToKey(outputColumnName: "movieIdEncoded", inputColumnName: "movieId"));
+
+        // choose machine learning algorithm and append to data transformation
+        // my recommendatoin training algorithm is matrix factorization
+        var options = new MatrixFactorizationTrainer.Options
+        {
+            MatrixColumnIndexColumnName = "userIdEncoded",
+            MatrixRowIndexColumnName = "movieIdEncoded",
+            LabelColumnName = "Label",
+            NumberOfIterations = 20,
+            ApproximationRank = 100
+        };
+
+        var trainerEstimator = estimator.Append(mlContext.Recommendation().Trainers.MatrixFactorization(options));
+
+        // fit the model to train data and return trained model
+        Console.WriteLine("=============== Training the model ===============");
+
+        // Fit() trains model with provided training data set, executes Estimator and returns trained model, Transformer
+        ITransformer model = trainerEstimator.Fit(trainingDataView);
+
+        return model;
     }
 }
