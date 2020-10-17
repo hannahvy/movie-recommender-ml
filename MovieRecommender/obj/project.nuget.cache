@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yNM0Qx4WiLZiAoDtRAPWb56MyxZTvo0M/L2+TLXGUCZB/RMBIULUr8OCRHQiPFCLidJF8WpMcnul1Ak4RGB5FQ==",
+  "dgSpecHash": "nplnNzqF2CQV2qR3f3Mv2Gx1VNyAuUCEZFbo8Iga6i3NrSoBxzQTdp+v7z9VyPE3tWepuW9OARblD1g58Z8L7Q==",
   "success": true,
-  "projectFilePath": "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/MovieRecommender.csproj",
+  "projectFilePath": "/Users/hannahnguyen/Desktop/movie-recommender-ml/MovieRecommender/MovieRecommender.csproj",
   "expectedPackageFiles": [
     "/Users/hannahnguyen/.nuget/packages/microsoft.csharp/4.3.0/microsoft.csharp.4.3.0.nupkg.sha512",
     "/Users/hannahnguyen/.nuget/packages/microsoft.ml/1.5.2/microsoft.ml.1.5.2.nupkg.sha512",

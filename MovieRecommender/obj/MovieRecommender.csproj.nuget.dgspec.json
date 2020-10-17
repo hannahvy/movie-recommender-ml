@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/MovieRecommender.csproj": {}
+    "/Users/hannahnguyen/Desktop/movie-recommender-ml/MovieRecommender/MovieRecommender.csproj": {}
   },
   "projects": {
-    "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/MovieRecommender.csproj": {
+    "/Users/hannahnguyen/Desktop/movie-recommender-ml/MovieRecommender/MovieRecommender.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/MovieRecommender.csproj",
+        "projectUniqueName": "/Users/hannahnguyen/Desktop/movie-recommender-ml/MovieRecommender/MovieRecommender.csproj",
         "projectName": "MovieRecommender",
-        "projectPath": "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/MovieRecommender.csproj",
+        "projectPath": "/Users/hannahnguyen/Desktop/movie-recommender-ml/MovieRecommender/MovieRecommender.csproj",
         "packagesPath": "/Users/hannahnguyen/.nuget/packages/",
-        "outputPath": "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/obj/",
+        "outputPath": "/Users/hannahnguyen/Desktop/movie-recommender-ml/MovieRecommender/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/hannahnguyen/.config/NuGet/NuGet.Config"
