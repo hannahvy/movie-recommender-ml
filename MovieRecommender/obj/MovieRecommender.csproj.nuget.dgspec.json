@@ -1,0 +1,71 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/MovieRecommender.csproj": {}
+  },
+  "projects": {
+    "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/MovieRecommender.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/MovieRecommender.csproj",
+        "projectName": "MovieRecommender",
+        "projectPath": "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/MovieRecommender.csproj",
+        "packagesPath": "/Users/hannahnguyen/.nuget/packages/",
+        "outputPath": "/Users/hannahnguyen/Projects/MovieRecommender/MovieRecommender/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/hannahnguyen/.config/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.ML": {
+              "target": "Package",
+              "version": "[1.5.2, )"
+            },
+            "Microsoft.ML.Recommender": {
+              "target": "Package",
+              "version": "[0.17.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/3.1.403/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
