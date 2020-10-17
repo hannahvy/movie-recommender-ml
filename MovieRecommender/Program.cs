@@ -16,10 +16,10 @@ namespace MovieRecommender
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run(); // here by default
             MLContext mlcontext = new MLContext(); // initializing creates new ML.NET enviornment
             (IDataView trainingDataView, IDataView testDataView) = LoadData(mlcontext); // calls LoadData
             ITransformer model = BuildAndTrainModel(mlcontext, trainingDataView); // calls BuildAndTrainModel
+            EvaluateModel(mlcontext, testDataView, model); // calls EvaluateModel
         }
 
         public static (IDataView training, IDataView test) LoadData(MLContext mlContext)
@@ -65,11 +65,21 @@ namespace MovieRecommender
             return model;
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) => // here by default
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        public static void EvaluateModel(MLContext mlContext, IDataView testDataView, ITransformer model)
+        {
+            // transform the test data
+            Console.WriteLine("=============== Evaluating the model ===============");
+
+            // Transform() makes predictions for multiple provided input rows of test dataset
+            var prediction = model.Transform(testDataView);
+
+            // evaluate the model
+            var metrics = mlContext.Regression.Evaluate(prediction, labelColumnName: "Label", scoreColumnName: "Score");
+
+            // print evaluation metrics to console
+            Console.WriteLine("Root Mean Squared Error : " + metrics.RootMeanSquaredError.ToString());
+            Console.WriteLine("RSquared: " + metrics.RSquared.ToString());
+        }
+
     }
 }

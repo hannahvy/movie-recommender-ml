@@ -1,19 +1,28 @@
 ﻿<Properties StartupConfiguration="{78E75655-A1E2-430D-9067-4B5FF49E406C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MovieRatingData.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Data/recommendation-ratings-train.csv">
     <Files>
-      <File FileName="Program.cs" Line="7" Column="47" />
-      <File FileName="MovieRatingData.cs" Line="1" Column="1" />
+      <File FileName="Program.cs" Line="39" Column="86" />
+      <File FileName="MovieRatingData.cs" Line="18" Column="28" />
+      <File FileName="Properties/launchSettings.json" Line="16" Column="8" />
+      <File FileName="Startup.cs" Line="14" Column="6" />
+      <File FileName="Data/recommendation-ratings-train.csv" Line="1" Column="1" />
+      <File FileName="Data/recommendation-ratings-test.csv" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MovieRecommender" expanded="True">
             <Node name="MovieRecommender" expanded="True">
-              <Node name="Data" expanded="True" />
-              <Node name="MovieRatingData.cs" selected="True" />
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Data" expanded="True">
+                <Node name="recommendation-ratings-train.csv" selected="True" />
+              </Node>
             </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
