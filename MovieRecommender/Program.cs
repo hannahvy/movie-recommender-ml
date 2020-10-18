@@ -20,6 +20,8 @@ namespace MovieRecommender
             (IDataView trainingDataView, IDataView testDataView) = LoadData(mlcontext); // calls LoadData
             ITransformer model = BuildAndTrainModel(mlcontext, trainingDataView); // calls BuildAndTrainModel
             EvaluateModel(mlcontext, testDataView, model); // calls EvaluateModel
+            UseModelForSinglePrediction(mlcontext, model); // calls UseModelForSinglePrediction
+            SaveModel(mlcontext, trainingDataView.Schema, model); // calls SaveModel
         }
 
         public static (IDataView training, IDataView test) LoadData(MLContext mlContext)
@@ -79,6 +81,39 @@ namespace MovieRecommender
             // print evaluation metrics to console
             Console.WriteLine("Root Mean Squared Error : " + metrics.RootMeanSquaredError.ToString());
             Console.WriteLine("RSquared: " + metrics.RSquared.ToString());
+        }
+
+        public static void UseModelForSinglePrediction(MLContext mlcontext, ITransformer model)
+        {
+            Console.WriteLine("=============== Making a prediction ===============");
+
+            // PredictionEngine - a convenience API that performs prediction on single instance of data
+            var predictionEngine = mlcontext.Model.CreatePredictionEngine<MovieRating, MovieRatingPrediction>(model);
+
+            // instance of MovieRating called testInput, pass to Prediction Engine
+            // determine if movieId 10 should be recommended to userId 6
+            var testInput = new MovieRating { userId = 6, movieId = 10 };
+
+            var movieRatingPrediction = predictionEngine.Predict(testInput);
+
+            if (Math.Round(movieRatingPrediction.Score, 1) > 3.5)
+            {
+                Console.WriteLine("Movie " + testInput.movieId + " is recommended for user " + testInput.userId);
+            }
+            else
+            {
+                Console.WriteLine("Movie " + testInput.movieId + " is not recommended for user " + testInput.userId);
+            }
+        }
+
+        // need to save model to make predictions in end-user applications
+        public static void SaveModel(MLContext mlcontext, DataViewSchema trainingDataViewSchema, ITransformer model)
+        {
+            // saves data in zip file in data folder, can be used in other .NET applications
+            var modelPath = Path.Combine(Environment.CurrentDirectory, "Data", "MovieRecommenderModel.zip");
+
+            Console.WriteLine("=============== Saving the model to a file ===============");
+            mlcontext.Model.Save(model, trainingDataViewSchema, modelPath);
         }
 
     }
